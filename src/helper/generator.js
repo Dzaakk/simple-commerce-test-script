@@ -18,6 +18,15 @@ export function generateRandomPassword() {
 /**
  * @returns {string}
  */
+function generateRandomEmail() {
+    const username = generateRandomUsername();
+    const domain = generateRandomDomain();
+    return `${username}@${domain}`
+}
+
+/**
+ * @returns {string}
+ */
 export function generateRandomDomain() {
     const domain = generateRandomName().replace(/\s/g, "").toLowerCase();
     const tlds = ["com", "net", "org", "io", "co", "xyz"]
@@ -28,7 +37,7 @@ export function generateRandomDomain() {
 /**
  * @returns {string}
  */
-export function generateRandomName() {
+export function generateRandomUsername() {
     const prefixes = [
         "An", "Ben", "Jon", "Xen", "Lor",
         "Mar", "Fel", "Cal", "Nor", "Zan",
