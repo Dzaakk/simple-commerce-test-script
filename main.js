@@ -1,8 +1,9 @@
 import { check, sleep } from 'k6';
 import http from 'k6/http';
+import { generateRandomEmail, generateRandomPhoneNumber, generateRandomUsername } from './src/helper/generator.js';
 
 export const options = {
-    vus: 1,
+    vus: 2,
     duration: '10s',
 }
 
@@ -12,9 +13,9 @@ export default function () {
     const url = 'http://localhost:8080/api/v1/register';
 
     let payload = JSON.stringify({
-        username: 'customer10',
-        email: 'customer10@gmail.com',
-        phoneNumber: '08123456789',
+        username: generateRandomUsername(),
+        email: generateRandomEmail(),
+        phone_number: generateRandomPhoneNumber(true),
         password: 'secretpass'
     })
 
