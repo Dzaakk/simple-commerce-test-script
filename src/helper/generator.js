@@ -18,8 +18,8 @@ export function generateRandomPassword() {
 /**
  * @returns {string}
  */
-function generateRandomEmail() {
-    const username = generateRandomUsername();
+export function generateRandomEmail() {
+    const username = generateRandomUsername().replace(/\s+/g, "");
     const domain = generateRandomDomain();
     return `${username}@${domain}`
 }
@@ -28,7 +28,7 @@ function generateRandomEmail() {
  * @returns {string}
  */
 export function generateRandomDomain() {
-    const domain = generateRandomName().replace(/\s/g, "").toLowerCase();
+    const domain = generateRandomUsername().replace(/\s/g, "").toLowerCase();
     const tlds = ["com", "net", "org", "io", "co", "xyz"]
     const tld = tlds[Math.floor(Math.random() * tlds.length)]
     return `${domain}.${tld}`
@@ -102,7 +102,7 @@ export function generateRandomPhoneNumber(addPlusPrefix) {
     const callingCode =
         callingCodes[Math.floor(Math.random() * callingCodes.length)]
     const phoneNumber = Math.floor(Math.random() * 10000000)
-        .toString
+        .toString()
         .padStart(8, "0")
 
     return addPlusPrefix
